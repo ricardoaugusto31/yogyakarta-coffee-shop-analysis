@@ -114,8 +114,13 @@ df_merged['skor_nongkrong_review'] = df_merged['CleanedReview'].apply(lambda x: 
 
 # Aggregate scores by summing them up for each coffee shop.
 shop_scores = df_merged.groupby('Id').agg({
-    'OrganizationName': 'first', 'RateStars': 'first', 'ReviewsTotalCount': 'first',
-    'skor_nugas_review': 'sum', 'skor_nongkrong_review': 'sum'
+    'OrganizationName': 'first',
+    'RateStars': 'first',
+    'ReviewsTotalCount': 'first',
+    'OrganizationLatitude': 'first',
+    'OrganizationLongitude': 'first',
+    'skor_nugas_review': 'sum',
+    'skor_nongkrong_review': 'sum'
 }).reset_index()
 
 shop_scores.rename(columns={
